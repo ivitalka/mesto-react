@@ -1,42 +1,25 @@
 import React from "react";
-import api from "../utils/Api";
 import Card from "./Card";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 
 
-function Main({onEditProfile, onAddPlace, onEditAvatar, onImageClick}) {
-    const [userName, setUserName] = React.useState('');
-    const [userDescription, setUserDescription] = React.useState('');
-    const [userAvatar, setUserAvatar] = React.useState('');
-    const [cards, setCards] = React.useState([]);
+function Main({cards, onCardLike, onCardDelete, onEditProfile, onAddPlace, onEditAvatar, onImageClick}) {
 
-    React.useEffect(() => {
-        api.getProfile()
-            .then(data =>{
-                setUserName(data.name);
-                setUserDescription(data.about);
-                setUserAvatar(data.avatar)
-            }).catch((err) => {
-            console.log(err);
-        });
-        api.getInitialCards()
-            .then(data => {setCards(data)})
-            .catch((err) => {
-            console.log(err);
-        })
-    }, []);
+    const currentUser = React.useContext(CurrentUserContext);
+
 
 
     return (
         <main className="content">
             <section className="profile">
                 <button className="button_action_update" onClick={onEditAvatar}>
-                    <img src={userAvatar} alt="Аватар профиля" className="profile__avatar"/>
+                    <img src={currentUser.avatar} alt="Аватар профиля" className="profile__avatar"/>
                 </button>
                 <div className="profile__info">
-                    <h1 className="profile__name">{userName}</h1>
+                    <h1 className="profile__name">{currentUser.name}</h1>
                     <button type="button" className="button button_action_edit" onClick={onEditProfile} />
-                    <p className="profile__about">{userDescription}</p>
+                    <p className="profile__about">{currentUser.about}</p>
                 </div>
                 <button type="button" className="button button_action_add" onClick={onAddPlace}/>
 
@@ -48,6 +31,8 @@ function Main({onEditProfile, onAddPlace, onEditAvatar, onImageClick}) {
                         <Card key={card._id}
                               card={card}
                               onImageClick={onImageClick}
+                              onCardLike = {onCardLike}
+                              onCardDelete={onCardDelete}
                         />
                     )}
                 </ul>

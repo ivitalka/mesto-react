@@ -27,6 +27,7 @@
 @import url(./blocks/button/_action/button_action_close.css);
 @import url(./blocks/button/_action/button_action_close-inactive.css);
 @import url(./blocks/button/_action/button_action_remove.css);
+@import url(./blocks/button/_action/button_action_remove-visible.css);
 @import url(./blocks/button/_action/button_action_like.css);
 @import url(./blocks/button/_action/button_action_like-active.css);
 @import url(./blocks/button/_action/button_action_update.css);
