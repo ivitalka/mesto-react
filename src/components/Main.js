@@ -1,16 +1,13 @@
-import React from "react";
-import Card from "./Card";
-import CurrentUserContext from "../contexts/CurrentUserContext";
+import React from 'react';
+import Card from './Card';
+import CurrentUserContext from '../contexts/CurrentUserContext';
 
+function Main({
+  cards, onCardLike, onCardDelete, onEditProfile, onAddPlace, onEditAvatar, onImageClick,
+}) {
+  const currentUser = React.useContext(CurrentUserContext);
 
-
-function Main({cards, onCardLike, onCardDelete, onEditProfile, onAddPlace, onEditAvatar, onImageClick}) {
-
-    const currentUser = React.useContext(CurrentUserContext);
-
-
-
-    return (
+  return (
         <main className="content">
             <section className="profile">
                 <button className="button_action_update" onClick={onEditAvatar}>
@@ -27,17 +24,15 @@ function Main({cards, onCardLike, onCardDelete, onEditProfile, onAddPlace, onEdi
 
             <section className="gallery">
                 <ul className="gallery__list">
-                    {cards.map((card) =>
-                        <Card key={card._id}
+                    {cards.map((card) => <Card key={card._id}
                               card={card}
                               onImageClick={onImageClick}
                               onCardLike = {onCardLike}
                               onCardDelete={onCardDelete}
-                        />
-                    )}
+                        />)}
                 </ul>
             </section>
         </main>
-    )
+  );
 }
 export default Main;

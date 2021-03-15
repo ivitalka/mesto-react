@@ -1,22 +1,21 @@
-import  React from "react";
+import React from 'react';
 
-import PopupWithForm from "./PopupWithForm";
+import PopupWithForm from './PopupWithForm';
 
-
-function AddPlacePopup({isOpen, onClose, onAddPlace}) {
-    const nameRef = React.useRef();
-    const linkRef = React.useRef();
-    function handleSubmit(e) {
-        e.preventDefault();
-        onAddPlace({
-            name: nameRef.current.value,
-            link: linkRef.current.value
-        })
-    }
-    return (
+function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
+  const nameRef = React.useRef();
+  const linkRef = React.useRef();
+  function handleSubmit(e) {
+    e.preventDefault();
+    onAddPlace({
+      name: nameRef.current.value,
+      link: linkRef.current.value,
+    });
+  }
+  return (
         <PopupWithForm
-            name={"add"}
-            title={"Новое место"}
+            name={'add'}
+            title={'Новое место'}
             children={
                 <>
                     <div className="popup__input-container">
@@ -34,7 +33,7 @@ function AddPlacePopup({isOpen, onClose, onAddPlace}) {
             onClose={onClose}
             onSubmit={handleSubmit}
         />
-    )
+  );
 }
 
 export default AddPlacePopup;

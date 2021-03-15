@@ -2,6 +2,8 @@
     border-bottom: 1px solid rgba(54, 54, 54, 0.7);
     max-width: 882px;
     padding-top: 45px ;
+    display: flex;
+    justify-content: flex-end;
 }
 
 @media screen and (max-width: 1124px) {

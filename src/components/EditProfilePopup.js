@@ -1,36 +1,36 @@
-import PopupWithForm from "./PopupWithForm";
-import React from "react";
-import CurrentUserContext from "../contexts/CurrentUserContext";
+import React from 'react';
+import PopupWithForm from './PopupWithForm';
+import CurrentUserContext from '../contexts/CurrentUserContext';
 
-function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
-    const currentUser = React.useContext(CurrentUserContext);
+function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
+  const currentUser = React.useContext(CurrentUserContext);
 
-    React.useEffect(() => {
-        setName(currentUser.name);
-        setDescription(currentUser.about);
-    }, [currentUser]);
+  React.useEffect(() => {
+    setName(currentUser.name);
+    setDescription(currentUser.about);
+  }, [currentUser]);
 
-    const [name, setName] = React.useState("");
-    const [description, setDescription] = React.useState("");
+  const [name, setName] = React.useState('');
+  const [description, setDescription] = React.useState('');
 
-    function handleNameChange(e) {
-        setName(e.target.value);
-    }
-    function handleDescriptionChange(e) {
-        setDescription(e.target.value);
-    }
-    function handleSubmit(e) {
-        e.preventDefault();
-        onUpdateUser({
-            name,
-            about: description,
-        });
-    }
+  function handleNameChange(e) {
+    setName(e.target.value);
+  }
+  function handleDescriptionChange(e) {
+    setDescription(e.target.value);
+  }
+  function handleSubmit(e) {
+    e.preventDefault();
+    onUpdateUser({
+      name,
+      about: description,
+    });
+  }
 
-    return (
+  return (
         <PopupWithForm
-            name={"edit"}
-            title={"Редактировать профиль"}
+            name={'edit'}
+            title={'Редактировать профиль'}
             children={
                 <>
                     <div className="popup__input-container">
@@ -49,7 +49,7 @@ function EditProfilePopup({isOpen, onClose, onUpdateUser}) {
             onClose={onClose}
             onSubmit={handleSubmit}
         />
-    )
+  );
 }
 
 export default EditProfilePopup;
